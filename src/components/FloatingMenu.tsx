@@ -19,22 +19,22 @@ export default function FloatingMenu() {
       {/* 3D Floating Menu Button */}
       <motion.button
         onClick={() => setIsOpen(!isOpen)}
-        className="fixed top-36 right-6 md:top-48 md:right-10 z-50 w-16 h-16 bg-black/60 backdrop-blur-xl border border-white/10 rounded-full flex flex-col items-center justify-center gap-[5px] cursor-pointer shadow-[0_0_30px_rgba(59,130,246,0.2)] hover:shadow-[0_0_40px_rgba(59,130,246,0.5)] hover:border-blue-500/50 transition-all group"
+        className="fixed top-20 right-4 md:top-48 md:right-10 z-50 w-12 h-12 md:w-16 md:h-16 bg-black/60 backdrop-blur-xl border border-white/10 rounded-full flex flex-col items-center justify-center gap-[4px] md:gap-[5px] cursor-pointer shadow-[0_0_30px_rgba(59,130,246,0.2)] hover:shadow-[0_0_40px_rgba(59,130,246,0.5)] hover:border-blue-500/50 transition-all group"
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.9 }}
       >
         {/* Animated Hamburger Lines */}
         <motion.div 
           animate={isOpen ? { rotate: 45, y: 7, backgroundColor: "#3b82f6" } : { rotate: 0, y: 0, backgroundColor: "#ffffff" }}
-          className="w-6 h-[2px] shadow-[0_0_8px_rgba(255,255,255,0.8)] rounded-full"
+          className="w-4 md:w-6 h-[2px] shadow-[0_0_8px_rgba(255,255,255,0.8)] rounded-full"
         />
         <motion.div 
           animate={isOpen ? { opacity: 0, scale: 0 } : { opacity: 1, scale: 1, backgroundColor: "#ffffff" }}
-          className="w-6 h-[2px] shadow-[0_0_8px_rgba(255,255,255,0.8)] rounded-full"
+          className="w-4 md:w-6 h-[2px] shadow-[0_0_8px_rgba(255,255,255,0.8)] rounded-full"
         />
         <motion.div 
           animate={isOpen ? { rotate: -45, y: -7, backgroundColor: "#3b82f6" } : { rotate: 0, y: 0, backgroundColor: "#ffffff" }}
-          className="w-6 h-[2px] shadow-[0_0_8px_rgba(255,255,255,0.8)] rounded-full"
+          className="w-4 md:w-6 h-[2px] shadow-[0_0_8px_rgba(255,255,255,0.8)] rounded-full"
         />
         
         {/* 3D Spinning Ring around the button */}
@@ -98,7 +98,7 @@ export default function FloatingMenu() {
                   animate={{ opacity: 1, y: 0, rotateX: 0 }}
                   exit={{ opacity: 0, y: -50, transition: { duration: 0.2 } }}
                   transition={{ duration: 0.5, delay: i * 0.1, type: "spring" }}
-                  className="group relative text-5xl md:text-7xl font-light text-white/70 hover:text-white transition-colors duration-300 uppercase tracking-[0.2em] cursor-pointer"
+                  className="group relative text-4xl md:text-7xl font-light text-white/70 hover:text-white transition-colors duration-300 uppercase tracking-[0.2em] cursor-pointer"
                   style={{ transformStyle: 'preserve-3d' }}
                 >
                   <span className="relative z-10">{item.name}</span>

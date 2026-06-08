@@ -54,7 +54,7 @@ export default function Projects() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-white text-5xl md:text-7xl font-light tracking-tight"
+            className="text-white text-4xl sm:text-5xl md:text-7xl font-light tracking-tight"
           >
             SELECTED <span className="font-bold">WORKS</span>
           </motion.h2>

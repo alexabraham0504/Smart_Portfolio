@@ -67,10 +67,10 @@ export default function Overlay({ scrollYProgress }: OverlayProps) {
         {/* Futuristic Dashboard Navigation (Visible at 0% and 100%) */}
         <motion.div
           style={{ opacity: headerOpacity }}
-          className="absolute top-0 left-0 w-full p-8 flex justify-between items-center z-50"
+          className="absolute top-0 left-0 w-full p-4 md:p-8 flex justify-between items-center z-50"
         >
           {/* Logo */}
-          <div className="flex items-center gap-1 text-3xl font-black tracking-tighter">
+          <div className="flex items-center gap-1 text-2xl md:text-3xl font-black tracking-tighter">
             <span className="text-white drop-shadow-[0_0_10px_rgba(255,255,255,0.8)]">A</span>
             <span className="text-blue-500 drop-shadow-[0_0_10px_rgba(59,130,246,0.8)]">A</span>
           </div>
@@ -89,8 +89,9 @@ export default function Overlay({ scrollYProgress }: OverlayProps) {
           </div>
 
           {/* Right Connect Button */}
-          <button className="flex items-center gap-3 px-6 py-2 rounded-full border border-white/10 bg-white/5 hover:bg-white/10 transition-colors text-xs font-mono tracking-widest text-white uppercase backdrop-blur-md">
-            LET'S CONNECT
+          <button className="flex items-center gap-2 md:gap-3 px-4 md:px-6 py-2 rounded-full border border-white/10 bg-white/5 hover:bg-white/10 transition-colors text-[10px] md:text-xs font-mono tracking-widest text-white uppercase backdrop-blur-md">
+            <span className="hidden sm:inline">LET&apos;S CONNECT</span>
+            <span className="sm:hidden">CONNECT</span>
             <div className="w-1.5 h-1.5 rounded-full bg-blue-500 shadow-[0_0_8px_rgba(59,130,246,1)]" />
           </button>
         </motion.div>
@@ -98,7 +99,7 @@ export default function Overlay({ scrollYProgress }: OverlayProps) {
         {/* Global Dashboard Elements (Visible at 0% and 100%) */}
         <motion.div style={{ opacity: headerOpacity }} className="absolute inset-0 pointer-events-none z-40">
           {/* Status Indicator (Top Left) */}
-          <div className="absolute top-28 left-8 flex flex-col gap-1">
+          <div className="hidden sm:flex absolute top-28 left-8 flex-col gap-1">
             <span className="text-[8px] text-white/40 font-mono tracking-widest uppercase">STATUS</span>
             <div className="flex items-center gap-2">
               <span className="text-xs text-blue-400 font-mono tracking-widest uppercase drop-shadow-[0_0_8px_rgba(59,130,246,0.8)]">ONLINE</span>
@@ -106,13 +107,13 @@ export default function Overlay({ scrollYProgress }: OverlayProps) {
           </div>
 
           {/* Location Indicator (Top Right) */}
-          <div className="absolute top-28 right-8 flex flex-col gap-1 items-end pr-10">
+          <div className="hidden sm:flex absolute top-28 right-8 flex-col gap-1 items-end pr-10">
             <span className="text-[8px] text-white/40 font-mono tracking-widest uppercase">LOCATION</span>
             <span className="text-xs text-blue-400 font-mono tracking-widest uppercase drop-shadow-[0_0_8px_rgba(59,130,246,0.8)]">INDIA</span>
           </div>
 
           {/* Left Scroll Tracker */}
-          <div className="absolute left-8 top-1/2 -translate-y-1/2 flex flex-col items-center gap-4">
+          <div className="hidden sm:flex absolute left-8 top-1/2 -translate-y-1/2 flex-col items-center gap-4">
             <span className="text-[10px] text-white/40 font-mono tracking-[0.3em] uppercase [writing-mode:vertical-lr] rotate-180">
               SCROLL TO EXPLORE
             </span>
@@ -121,7 +122,7 @@ export default function Overlay({ scrollYProgress }: OverlayProps) {
           </div>
 
           {/* Right Pagination Tracker */}
-          <div className="absolute right-8 top-1/2 -translate-y-1/2 flex flex-col items-center gap-2">
+          <div className="hidden sm:flex absolute right-8 top-1/2 -translate-y-1/2 flex-col items-center gap-2">
             <div className="w-[1px] h-3 bg-white/40" />
             <div className="w-[1px] h-3 bg-white/20" />
             <div className="w-1.5 h-1.5 rounded-sm bg-blue-500 shadow-[0_0_8px_rgba(59,130,246,0.8)]" />
@@ -132,8 +133,8 @@ export default function Overlay({ scrollYProgress }: OverlayProps) {
           </div>
 
           {/* Bottom Footer Area */}
-          <div className="absolute bottom-8 left-8 right-8 flex justify-between items-end">
-            <span className="text-[10px] text-white/40 font-mono tracking-widest">© 2026 Alex Abraham</span>
+          <div className="absolute bottom-8 left-4 right-4 md:left-8 md:right-8 flex justify-between items-end">
+            <span className="text-[8px] md:text-[10px] text-white/40 font-mono tracking-widest hidden sm:inline-block">© 2026 Alex Abraham</span>
             
             <div className="hidden md:flex gap-4 text-[10px] text-white/40 font-mono tracking-[0.2em] uppercase items-center">
               <span>AI BUILDER</span>
@@ -143,7 +144,7 @@ export default function Overlay({ scrollYProgress }: OverlayProps) {
               <span>TECH ENTHUSIAST</span>
             </div>
 
-            <div className="flex flex-col items-end gap-2 pr-10">
+            <div className="hidden sm:flex flex-col items-end gap-2 pr-4 md:pr-10 ml-auto">
               <span className="text-[8px] text-white/40 font-mono tracking-widest uppercase">SYSTEM UPTIME</span>
               <div className="flex items-center gap-3">
                 <span className="text-xs text-blue-400 font-mono drop-shadow-[0_0_5px_rgba(59,130,246,0.8)]">99.9%</span>
@@ -181,10 +182,10 @@ export default function Overlay({ scrollYProgress }: OverlayProps) {
                 <div className="absolute w-full h-[1px] bg-white/5" />
                 <div className="absolute h-full w-[1px] bg-white/5" />
                 {/* Deep Center Nebula */}
-                <div className="w-[600px] h-[400px] bg-blue-600/30 blur-[120px] rounded-[100%] absolute" />
+                <div className="w-[80vw] max-w-[600px] h-[80vw] max-h-[400px] bg-blue-600/30 blur-[80px] md:blur-[120px] rounded-[100%] absolute" />
               </div>
 
-              {/* EXPERTISE Left Panel */}
+              {/* EXPERTISE Left Panel — desktop only */}
               <div className="hidden lg:block absolute left-[5%] top-[60%] -translate-y-1/2 w-[280px] p-6 rounded-2xl bg-black/40 backdrop-blur-xl border border-white/10 shadow-[0_0_40px_rgba(0,0,0,0.8)]">
                 <span className="text-[10px] text-white/40 font-mono tracking-[0.2em] uppercase mb-6 block">EXPERTISE</span>
                 <div className="flex flex-col gap-6">
@@ -207,7 +208,7 @@ export default function Overlay({ scrollYProgress }: OverlayProps) {
                 </div>
               </div>
 
-              {/* TECH STACK Right Panel */}
+              {/* TECH STACK Right Panel — desktop only */}
               <div className="hidden lg:block absolute right-[5%] top-[60%] -translate-y-1/2 w-[300px] p-6 rounded-2xl bg-black/40 backdrop-blur-xl border border-white/10 shadow-[0_0_40px_rgba(0,0,0,0.8)]">
                 <span className="text-[10px] text-white/40 font-mono tracking-[0.2em] uppercase mb-6 block">TECH STACK</span>
                 <div className="grid grid-cols-3 gap-y-8 gap-x-4">
@@ -256,6 +257,31 @@ export default function Overlay({ scrollYProgress }: OverlayProps) {
                 </div>
               </div>
 
+              {/* MOBILE: Compact expertise & tech badges below hero */}
+              <div className="lg:hidden absolute bottom-36 left-0 right-0 px-6 flex flex-col items-center gap-3">
+                <div className="flex flex-wrap justify-center gap-2">
+                  <span className="px-3 py-1.5 rounded-full bg-black/50 backdrop-blur-md border border-white/10 text-[10px] text-white/70 font-mono flex items-center gap-1.5">
+                    <Terminal className="w-3 h-3 text-blue-400" /> Full Stack
+                  </span>
+                  <span className="px-3 py-1.5 rounded-full bg-black/50 backdrop-blur-md border border-white/10 text-[10px] text-white/70 font-mono flex items-center gap-1.5">
+                    <Brain className="w-3 h-3 text-blue-400" /> AI / ML
+                  </span>
+                  <span className="px-3 py-1.5 rounded-full bg-black/50 backdrop-blur-md border border-white/10 text-[10px] text-white/70 font-mono flex items-center gap-1.5">
+                    <Cloud className="w-3 h-3 text-blue-400" /> Cloud
+                  </span>
+                  <span className="px-3 py-1.5 rounded-full bg-black/50 backdrop-blur-md border border-white/10 text-[10px] text-white/70 font-mono flex items-center gap-1.5">
+                    <Layers className="w-3 h-3 text-blue-400" /> System Design
+                  </span>
+                </div>
+                <div className="flex flex-wrap justify-center gap-1.5">
+                  {["React", "Next.js", "Node.js", "TS", "Python", "AWS"].map((t) => (
+                    <span key={t} className="px-2.5 py-1 rounded-full bg-white/5 border border-white/10 text-[9px] text-white/50 font-mono">
+                      {t}
+                    </span>
+                  ))}
+                </div>
+              </div>
+
               {/* Center Hero Typography */}
               <motion.div
                 initial={{ scale: 0.95, opacity: 0 }}
@@ -267,12 +293,12 @@ export default function Overlay({ scrollYProgress }: OverlayProps) {
                   AI ENGINEER & FULL STACK DEVELOPER
                 </span>
                 
-                <h2 className="flex flex-col items-center gap-0 text-[5rem] md:text-[11rem] leading-[0.85] mb-16 text-white tracking-tighter drop-shadow-[0_0_40px_rgba(255,255,255,0.2)]">
+                <h2 className="flex flex-col items-center gap-0 text-[3.5rem] sm:text-[5rem] md:text-[11rem] leading-[0.85] mb-12 md:mb-16 text-white tracking-tighter drop-shadow-[0_0_40px_rgba(255,255,255,0.2)]">
                   <span className="font-black uppercase tracking-tight">ALEX</span>
-                  <span className="font-light italic text-white/80 tracking-normal ml-8 md:ml-16">Abraham</span>
+                  <span className="font-light italic text-white/80 tracking-normal ml-4 md:ml-16">Abraham</span>
                 </h2>
 
-                <div className="flex flex-col md:flex-row items-center gap-6 border border-white/10 bg-blue-900/10 px-8 py-4 rounded-full backdrop-blur-xl shadow-[0_0_30px_rgba(59,130,246,0.15)] pointer-events-auto">
+                <div className="flex flex-col md:flex-row items-center gap-4 md:gap-6 border border-white/10 bg-blue-900/10 px-5 md:px-8 py-3 md:py-4 rounded-full backdrop-blur-xl shadow-[0_0_30px_rgba(59,130,246,0.15)] pointer-events-auto">
                   <AnimatePresence mode="wait">
                     <motion.p
                       key={titleIndex}
@@ -380,10 +406,10 @@ export default function Overlay({ scrollYProgress }: OverlayProps) {
       {/* Section 2: Middle Left Side */}
       <motion.div
         style={{ opacity: opacity2, y: y2 }}
-        className="absolute top-1/2 -translate-y-1/2 left-[5%] md:left-[10%] w-full md:w-[45%] lg:w-[35%] px-4"
+        className="absolute top-1/2 -translate-y-1/2 left-0 md:left-[10%] w-[85%] md:w-[45%] lg:w-[35%] px-4 ml-[5%] md:ml-0"
       >
-        <div className="backdrop-blur-xl bg-black/40 p-8 rounded-2xl border border-white/5 shadow-[0_0_30px_rgba(0,0,0,0.8)]">
-          <h2 className="text-4xl md:text-5xl font-light tracking-tight text-white leading-tight">
+        <div className="backdrop-blur-xl bg-black/40 p-5 md:p-8 rounded-2xl border border-white/5 shadow-[0_0_30px_rgba(0,0,0,0.8)]">
+          <h2 className="text-3xl md:text-5xl font-light tracking-tight text-white leading-tight">
             Building intelligent <br />
             <span className="font-bold text-white">
               systems.
@@ -399,7 +425,7 @@ export default function Overlay({ scrollYProgress }: OverlayProps) {
       {/* Cinematic 1: Bottom Right */}
       <motion.div
         style={{ opacity: opacityCinematic1, y: yCinematic1 }}
-        className="absolute bottom-[15%] right-[5%] md:right-[10%] w-full md:w-[40%] px-4 flex justify-end"
+        className="absolute bottom-[15%] right-0 md:right-[10%] w-[85%] md:w-[40%] px-4 mr-[5%] md:mr-0 flex justify-end"
       >
         <div className="backdrop-blur-xl bg-black/40 p-6 rounded-xl border border-white/5 shadow-[0_0_30px_rgba(0,0,0,0.8)] inline-block text-right">
           <p className="text-cyan-400/80 font-mono text-[10px] md:text-xs tracking-[0.4em] mb-2 uppercase">Neural Networks</p>
@@ -412,10 +438,10 @@ export default function Overlay({ scrollYProgress }: OverlayProps) {
       {/* Section 3: Middle Right Side */}
       <motion.div
         style={{ opacity: opacity3, y: y3 }}
-        className="absolute top-1/2 -translate-y-1/2 right-[5%] md:right-[10%] w-full md:w-[45%] lg:w-[35%] px-4 flex justify-end"
+        className="absolute top-1/2 -translate-y-1/2 right-0 md:right-[10%] w-[85%] md:w-[45%] lg:w-[35%] px-4 mr-[5%] md:mr-0 flex justify-end"
       >
-        <div className="backdrop-blur-xl bg-black/40 p-8 rounded-2xl border border-white/5 shadow-[0_0_30px_rgba(0,0,0,0.8)] text-right">
-          <h2 className="text-4xl md:text-5xl font-light tracking-tight text-white leading-tight">
+        <div className="backdrop-blur-xl bg-black/40 p-5 md:p-8 rounded-2xl border border-white/5 shadow-[0_0_30px_rgba(0,0,0,0.8)] text-right">
+          <h2 className="text-3xl md:text-5xl font-light tracking-tight text-white leading-tight">
             Bridging research <br />
             <span className="font-bold text-white">
               and production.
@@ -423,7 +449,7 @@ export default function Overlay({ scrollYProgress }: OverlayProps) {
           </h2>
           <div className="mt-8 flex flex-col space-y-2 border-r border-cyan-500/50 pr-4 items-end opacity-80">
             <p className="text-white/80 tracking-[0.2em] text-xs md:text-sm uppercase font-mono">High-performance APIs</p>
-            <p className="text-cyan-400/80 text-[10px] md:text-xs font-mono tracking-[0.2em]">await deploy.model('v4-turbo')</p>
+            <p className="text-cyan-400/80 text-[10px] md:text-xs font-mono tracking-[0.2em]">await deploy.model(&apos;v4-turbo&apos;)</p>
           </div>
         </div>
       </motion.div>
@@ -431,7 +457,7 @@ export default function Overlay({ scrollYProgress }: OverlayProps) {
       {/* Cinematic 2: Bottom Left */}
       <motion.div
         style={{ opacity: opacityCinematic2, y: yCinematic2 }}
-        className="absolute bottom-[15%] left-[5%] md:left-[10%] w-full md:w-[40%] px-4"
+        className="absolute bottom-[15%] left-0 md:left-[10%] w-[85%] md:w-[40%] px-4 ml-[5%] md:ml-0"
       >
         <div className="backdrop-blur-xl bg-black/40 p-6 rounded-xl border border-white/5 shadow-[0_0_30px_rgba(0,0,0,0.8)] inline-block">
           <p className="text-cyan-400/80 font-mono text-[10px] md:text-xs tracking-[0.4em] mb-2 uppercase">System Architecture</p>

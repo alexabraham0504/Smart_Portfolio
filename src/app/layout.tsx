@@ -19,7 +19,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="scroll-smooth">
-      <body className={`${spaceGrotesk.className} bg-[#121212] text-white antialiased`}>
+      <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+      </head>
+      <body className={`${spaceGrotesk.className} bg-[#121212] text-white antialiased overflow-x-hidden`}>
         <AmbientBackground />
         <FloatingMenu />
         {children}

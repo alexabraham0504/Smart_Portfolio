@@ -60,7 +60,7 @@ export default function Services() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-white text-5xl md:text-7xl font-light tracking-tight uppercase"
+            className="text-white text-4xl sm:text-5xl md:text-7xl font-light tracking-tight uppercase"
           >
             Core <span className="font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-600">Services</span>
           </motion.h2>
