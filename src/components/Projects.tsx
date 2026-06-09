@@ -5,25 +5,39 @@ import { ExternalLink } from "lucide-react";
 
 const projects = [
   {
-    name: "AI CONTENT ENGINE",
-    description: "Built an AI-powered platform that generates SEO-optimized marketing content using GPT-4 and custom fine-tuned models.",
-    stack: ["Next.js", "OpenAI", "PostgreSQL"],
-    url: "#",
-    github: "#",
+    name: "LexNet",
+    description: "A specialized network or system application built with JavaScript.",
+    stack: ["JavaScript"],
+    url: "https://github.com/alexabraham0504/LexNet",
+    github: "https://github.com/alexabraham0504/LexNet",
   },
   {
-    name: "REAL-TIME WORKSPACE",
-    description: "WebSocket-powered document editing system enabling seamless real-time collaboration for distributed teams.",
-    stack: ["React", "Node.js", "Socket.io"],
-    url: "#",
-    github: "#",
+    name: "AI Question Answering System",
+    description: "An artificial intelligence system designed to process and answer complex queries.",
+    stack: ["Python", "AI/ML"],
+    url: "https://github.com/alexabraham0504/ai_question_answering_system",
+    github: "https://github.com/alexabraham0504/ai_question_answering_system",
   },
   {
-    name: "ML ANALYTICS PLATFORM",
-    description: "Unified analytics dashboard with predictive ML models and interactive data visualizations.",
-    stack: ["React", "Python", "TensorFlow"],
-    url: "#",
-    github: "#",
+    name: "Semantic Response Generator",
+    description: "A system that leverages semantic analysis to generate context-aware responses.",
+    stack: ["JavaScript", "NLP"],
+    url: "https://github.com/alexabraham0504/semantic_response_generator",
+    github: "https://github.com/alexabraham0504/semantic_response_generator",
+  },
+  {
+    name: "Event Management",
+    description: "A comprehensive event management platform with booking and scheduling features.",
+    stack: ["PHP"],
+    url: "https://github.com/alexabraham0504/event_management",
+    github: "https://github.com/alexabraham0504/event_management",
+  },
+  {
+    name: "Logistics Pro",
+    description: "A logistics and supply chain management dashboard.",
+    stack: ["HTML", "CSS"],
+    url: "https://logistics-pro-nu.vercel.app/",
+    github: "https://github.com/alexabraham0504/logistics_pro",
   }
 ];
 

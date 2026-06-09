@@ -4,9 +4,7 @@ import { useRef } from "react";
 import { useScroll } from "framer-motion";
 import ScrollyCanvas from "@/components/ScrollyCanvas";
 import Overlay from "@/components/Overlay";
-import Projects from "@/components/Projects";
-import Skills from "@/components/Skills";
-import Services from "@/components/Services";
+import InteractiveHub from "@/components/InteractiveHub";
 import Contact from "@/components/Contact";
 
 export default function Home() {
@@ -28,12 +26,7 @@ export default function Home() {
         <Overlay scrollYProgress={scrollYProgress} />
       </div>
 
-      <Skills />
-      
-      <Services />
-
-      <Projects />
-
+      <InteractiveHub />
       <Contact />
       
       {/* Footer */}

@@ -2,16 +2,16 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { FileText } from "lucide-react";
 
 export default function FloatingMenu() {
   const [isOpen, setIsOpen] = useState(false);
 
   const menuItems = [
     { name: "Home", href: "#" },
-    { name: "Arsenal", href: "#skills" },
-    { name: "Services", href: "#services" },
-    { name: "Works", href: "#projects" },
-    { name: "Contact", href: "#contact" }
+    { name: "Database Hub", href: "#hub" },
+    { name: "Contact", href: "#contact" },
+    { name: "Resume", href: "https://drive.google.com/file/d/115vUSI0BmEI4sxL8EO8DEZVZL7iPpAEu/view?usp=drive_link" }
   ];
 
   return (
@@ -19,22 +19,22 @@ export default function FloatingMenu() {
       {/* 3D Floating Menu Button */}
       <motion.button
         onClick={() => setIsOpen(!isOpen)}
-        className="fixed top-20 right-4 md:top-48 md:right-10 z-50 w-12 h-12 md:w-16 md:h-16 bg-black/60 backdrop-blur-xl border border-white/10 rounded-full flex flex-col items-center justify-center gap-[4px] md:gap-[5px] cursor-pointer shadow-[0_0_30px_rgba(59,130,246,0.2)] hover:shadow-[0_0_40px_rgba(59,130,246,0.5)] hover:border-blue-500/50 transition-all group"
+        className="fixed top-[40%] right-4 md:right-10 z-50 w-10 h-10 md:w-12 md:h-12 bg-black/60 backdrop-blur-xl border border-white/10 rounded-full flex flex-col items-center justify-center gap-[3px] md:gap-[4px] cursor-pointer shadow-[0_0_30px_rgba(59,130,246,0.2)] hover:shadow-[0_0_40px_rgba(59,130,246,0.5)] hover:border-blue-500/50 transition-all group"
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.9 }}
       >
         {/* Animated Hamburger Lines */}
         <motion.div 
-          animate={isOpen ? { rotate: 45, y: 7, backgroundColor: "#3b82f6" } : { rotate: 0, y: 0, backgroundColor: "#ffffff" }}
-          className="w-4 md:w-6 h-[2px] shadow-[0_0_8px_rgba(255,255,255,0.8)] rounded-full"
+          animate={isOpen ? { rotate: 45, y: 5, backgroundColor: "#3b82f6" } : { rotate: 0, y: 0, backgroundColor: "#ffffff" }}
+          className="w-4 md:w-5 h-[1.5px] shadow-[0_0_8px_rgba(255,255,255,0.8)] rounded-full"
         />
         <motion.div 
           animate={isOpen ? { opacity: 0, scale: 0 } : { opacity: 1, scale: 1, backgroundColor: "#ffffff" }}
-          className="w-4 md:w-6 h-[2px] shadow-[0_0_8px_rgba(255,255,255,0.8)] rounded-full"
+          className="w-4 md:w-5 h-[1.5px] shadow-[0_0_8px_rgba(255,255,255,0.8)] rounded-full"
         />
         <motion.div 
-          animate={isOpen ? { rotate: -45, y: -7, backgroundColor: "#3b82f6" } : { rotate: 0, y: 0, backgroundColor: "#ffffff" }}
-          className="w-4 md:w-6 h-[2px] shadow-[0_0_8px_rgba(255,255,255,0.8)] rounded-full"
+          animate={isOpen ? { rotate: -45, y: -5, backgroundColor: "#3b82f6" } : { rotate: 0, y: 0, backgroundColor: "#ffffff" }}
+          className="w-4 md:w-5 h-[1.5px] shadow-[0_0_8px_rgba(255,255,255,0.8)] rounded-full"
         />
         
         {/* 3D Spinning Ring around the button */}
@@ -44,6 +44,34 @@ export default function FloatingMenu() {
           className="absolute inset-[-4px] rounded-full border border-blue-500/40 border-dashed pointer-events-none"
         />
       </motion.button>
+
+      {/* Floating 3D Resume Icon */}
+      <motion.a
+        href="https://drive.google.com/file/d/115vUSI0BmEI4sxL8EO8DEZVZL7iPpAEu/view?usp=drive_link"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="fixed top-[50%] right-4 md:right-10 z-50 w-10 h-10 md:w-12 md:h-12 bg-blue-600/20 backdrop-blur-xl border border-blue-400/30 rounded-full flex items-center justify-center cursor-pointer shadow-[0_0_20px_rgba(59,130,246,0.3)] hover:shadow-[0_0_40px_rgba(59,130,246,0.8)] hover:border-blue-400 hover:bg-blue-600/40 transition-all group [transform-style:preserve-3d]"
+        whileHover={{ scale: 1.15, rotateY: 15, rotateX: -15 }}
+        whileTap={{ scale: 0.9 }}
+        animate={{ y: [0, -5, 0] }}
+        transition={{ y: { duration: 2, repeat: Infinity, ease: "easeInOut" } }}
+      >
+        <motion.div
+          animate={{ rotateY: 360 }}
+          transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
+          className="relative flex items-center justify-center [transform-style:preserve-3d]"
+        >
+          <FileText className="w-4 h-4 md:w-5 md:h-5 text-white drop-shadow-[0_0_8px_rgba(255,255,255,0.8)]" />
+          
+          {/* 3D Holographic Inner Ring */}
+          <div className="absolute inset-[-8px] border border-cyan-400/50 rounded-full [transform:translateZ(10px)] pointer-events-none" />
+          
+          {/* Tooltip on hover */}
+          <span className="absolute right-full mr-4 px-3 py-1.5 rounded-lg bg-black/80 backdrop-blur-md border border-blue-500/30 text-[10px] md:text-xs font-mono text-blue-100 opacity-0 group-hover:opacity-100 translate-x-4 group-hover:translate-x-0 transition-all duration-300 whitespace-nowrap pointer-events-none">
+            VIEW RESUME
+          </span>
+        </motion.div>
+      </motion.a>
 
       {/* Fullscreen Overlay Menu */}
       <AnimatePresence>
@@ -92,8 +120,12 @@ export default function FloatingMenu() {
                       setTimeout(() => {
                         window.scrollTo({ top: 0, behavior: 'smooth' });
                       }, 300);
+                    } else {
+                      setIsOpen(false);
                     }
                   }}
+                  target={item.href.startsWith('http') ? "_blank" : undefined}
+                  rel={item.href.startsWith('http') ? "noopener noreferrer" : undefined}
                   initial={{ opacity: 0, y: 50, rotateX: -90 }}
                   animate={{ opacity: 1, y: 0, rotateX: 0 }}
                   exit={{ opacity: 0, y: -50, transition: { duration: 0.2 } }}

@@ -75,25 +75,21 @@ export default function Overlay({ scrollYProgress }: OverlayProps) {
             <span className="text-blue-500 drop-shadow-[0_0_10px_rgba(59,130,246,0.8)]">A</span>
           </div>
 
-          {/* Center Nav */}
-          <div className="hidden md:flex gap-8 text-[10px] font-mono tracking-widest text-white/50 uppercase">
-            <div className="relative text-white flex flex-col items-center">
-              <span>HOME</span>
-              <div className="absolute -bottom-2 w-4 h-[2px] bg-blue-500 shadow-[0_0_8px_rgba(59,130,246,1)]" />
-            </div>
-            <span className="hover:text-white cursor-pointer transition-colors">ABOUT</span>
-            <span className="hover:text-white cursor-pointer transition-colors">WORK</span>
-            <span className="hover:text-white cursor-pointer transition-colors">SKILLS</span>
-            <span className="hover:text-white cursor-pointer transition-colors">EXPERIENCE</span>
-            <span className="hover:text-white cursor-pointer transition-colors">CONTACT</span>
-          </div>
 
           {/* Right Connect Button */}
-          <button className="flex items-center gap-2 md:gap-3 px-4 md:px-6 py-2 rounded-full border border-white/10 bg-white/5 hover:bg-white/10 transition-colors text-[10px] md:text-xs font-mono tracking-widest text-white uppercase backdrop-blur-md">
+          <a 
+            href="#contact"
+            onClick={(e) => {
+              e.preventDefault();
+              const el = document.querySelector('#contact');
+              if (el) el.scrollIntoView({ behavior: 'smooth' });
+            }}
+            className="flex items-center gap-2 md:gap-3 px-4 md:px-6 py-2 rounded-full border border-white/10 bg-white/5 hover:bg-white/10 transition-colors text-[10px] md:text-xs font-mono tracking-widest text-white uppercase backdrop-blur-md cursor-pointer pointer-events-auto"
+          >
             <span className="hidden sm:inline">LET&apos;S CONNECT</span>
             <span className="sm:hidden">CONNECT</span>
             <div className="w-1.5 h-1.5 rounded-full bg-blue-500 shadow-[0_0_8px_rgba(59,130,246,1)]" />
-          </button>
+          </a>
         </motion.div>
 
         {/* Global Dashboard Elements (Visible at 0% and 100%) */}

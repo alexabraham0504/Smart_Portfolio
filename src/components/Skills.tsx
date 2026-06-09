@@ -5,19 +5,19 @@ import { motion } from "framer-motion";
 const skills = [
   {
     category: "Frontend Development",
-    items: ["React", "Next.js", "TypeScript", "Tailwind CSS", "Framer Motion", "Three.js"],
+    items: ["React", "Next.js", "JavaScript", "TypeScript", "HTML", "Tailwind CSS"],
     color: "from-orange-500/20 to-red-500/20",
     border: "border-orange-500/30",
   },
   {
     category: "Backend & Systems",
-    items: ["Node.js", "Python", "PostgreSQL", "GraphQL", "Redis", "AWS"],
+    items: ["Node.js", "Python", "PHP", "PostgreSQL", "AWS"],
     color: "from-blue-500/20 to-cyan-500/20",
     border: "border-blue-500/30",
   },
   {
-    category: "Design & UX",
-    items: ["Figma", "UI/UX Design", "Wireframing", "Prototyping", "Design Systems"],
+    category: "Design & Concepts",
+    items: ["System Architecture", "Machine Learning", "Semantic AI", "UI/UX Design"],
     color: "from-purple-500/20 to-pink-500/20",
     border: "border-purple-500/30",
   }

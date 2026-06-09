@@ -1,9 +1,42 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { Send, Mail } from "lucide-react";
 
 export default function Contact() {
+  const [formData, setFormData] = useState({ name: "", email: "", message: "" });
+  const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setStatus("submitting");
+
+    const url = "https://docs.google.com/forms/u/0/d/e/1FAIpQLSer8i6fGmXEfJVdE102_hW08wtnMhgx8PL_EU6uP5KaZaFJew/formResponse";
+    const data = new URLSearchParams();
+    data.append("entry.514834242", formData.name);
+    data.append("entry.1282065029", formData.email);
+    data.append("entry.1035688519", formData.message);
+
+    try {
+      await fetch(url, {
+        method: "POST",
+        mode: "no-cors",
+        body: data,
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded"
+        }
+      });
+      setStatus("success");
+      setFormData({ name: "", email: "", message: "" });
+      setTimeout(() => setStatus("idle"), 5000);
+    } catch (error) {
+      console.error(error);
+      setStatus("error");
+      setTimeout(() => setStatus("idle"), 5000);
+    }
+  };
+
   return (
     <section className="relative z-20 bg-[#121212] py-24 px-4 md:px-16 overflow-hidden" id="contact">
       {/* 3D Animated Orbital Rings Background */}
@@ -55,8 +88,8 @@ export default function Contact() {
           </div>
 
           <div className="flex gap-4">
-            <SocialIcon icon={<GithubIcon className="w-5 h-5" />} href="#" />
-            <SocialIcon icon={<LinkedinIcon className="w-5 h-5" />} href="#" />
+            <SocialIcon icon={<GithubIcon className="w-5 h-5" />} href="https://github.com/alexabraham0504" />
+            <SocialIcon icon={<LinkedinIcon className="w-5 h-5" />} href="https://www.linkedin.com/in/alex-abraham-28b266364/" />
             <SocialIcon icon={<TwitterIcon className="w-5 h-5" />} href="#" />
           </div>
         </div>
@@ -70,12 +103,14 @@ export default function Contact() {
           className="w-full md:w-1/2"
         >
           <div className="p-8 rounded-3xl bg-black/40 backdrop-blur-xl border border-white/10 shadow-[0_0_40px_rgba(0,0,0,0.5)]">
-            <form className="flex flex-col gap-6" onSubmit={(e) => e.preventDefault()}>
+            <form className="flex flex-col gap-6" onSubmit={handleSubmit}>
               
               <div className="group relative">
                 <input 
                   type="text" 
                   required
+                  value={formData.name}
+                  onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                   className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-4 text-white outline-none focus:border-orange-500/50 focus:bg-white/10 transition-all peer"
                   placeholder=" "
                 />
@@ -88,6 +123,8 @@ export default function Contact() {
                 <input 
                   type="email" 
                   required
+                  value={formData.email}
+                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                   className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-4 text-white outline-none focus:border-orange-500/50 focus:bg-white/10 transition-all peer"
                   placeholder=" "
                 />
@@ -100,6 +137,8 @@ export default function Contact() {
                 <textarea 
                   required
                   rows={4}
+                  value={formData.message}
+                  onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                   className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-4 text-white outline-none focus:border-orange-500/50 focus:bg-white/10 transition-all peer resize-none"
                   placeholder=" "
                 />
@@ -108,13 +147,63 @@ export default function Contact() {
                 </label>
               </div>
 
-              <button className="relative group overflow-hidden rounded-xl p-[1px] mt-4">
+              <button disabled={status === "submitting"} type="submit" className="relative group overflow-hidden rounded-xl p-[1px] mt-4 disabled:opacity-50">
                 <span className="absolute inset-0 bg-gradient-to-r from-orange-500 to-red-500 rounded-xl opacity-70 group-hover:opacity-100 transition-opacity duration-300" />
                 <div className="relative flex items-center justify-center gap-3 px-8 py-4 bg-black rounded-xl group-hover:bg-black/50 transition-colors duration-300">
-                  <span className="font-bold text-white tracking-widest uppercase text-sm">Initiate Transfer</span>
+                  <span className="font-bold text-white tracking-widest uppercase text-sm">
+                    {status === "submitting" ? "Initiating..." : "Initiate Transfer"}
+                  </span>
                   <Send className="w-4 h-4 text-orange-400 group-hover:translate-x-1 transition-transform" />
                 </div>
               </button>
+
+              <AnimatePresence>
+                {(status === "success" || status === "error") && (
+                  <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/60 backdrop-blur-sm px-4">
+                    <motion.div 
+                      initial={{ opacity: 0, scale: 0.9, y: 20 }} 
+                      animate={{ opacity: 1, scale: 1, y: 0 }} 
+                      exit={{ opacity: 0, scale: 0.9, y: 20 }}
+                      className={`p-8 rounded-3xl border shadow-2xl max-w-md w-full text-center relative overflow-hidden ${
+                        status === "success" 
+                          ? "bg-[#111] border-green-500/50 shadow-[0_0_50px_rgba(34,197,94,0.2)]" 
+                          : "bg-[#111] border-red-500/50 shadow-[0_0_50px_rgba(239,68,68,0.2)]"
+                      }`}
+                    >
+                      {status === "success" ? (
+                        <>
+                          <div className="absolute inset-0 bg-green-500/5 pointer-events-none" />
+                          <div className="w-16 h-16 bg-green-500/20 text-green-400 rounded-full flex items-center justify-center mx-auto mb-6 shadow-[0_0_20px_rgba(34,197,94,0.4)]">
+                            <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                              <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                            </svg>
+                          </div>
+                          <h3 className="text-2xl font-bold text-white mb-2 uppercase tracking-tight">Transmission <span className="text-green-400">Successful</span></h3>
+                          <p className="text-green-400/80 font-mono text-sm leading-relaxed">Your message has been securely delivered to the database. I will respond shortly.</p>
+                        </>
+                      ) : (
+                        <>
+                          <div className="absolute inset-0 bg-red-500/5 pointer-events-none" />
+                          <div className="w-16 h-16 bg-red-500/20 text-red-400 rounded-full flex items-center justify-center mx-auto mb-6 shadow-[0_0_20px_rgba(239,68,68,0.4)]">
+                            <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                              <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+                            </svg>
+                          </div>
+                          <h3 className="text-2xl font-bold text-white mb-2 uppercase tracking-tight">Transmission <span className="text-red-400">Failed</span></h3>
+                          <p className="text-red-400/80 font-mono text-sm leading-relaxed">There was a network error during transfer. Please try again or email me directly.</p>
+                        </>
+                      )}
+                      
+                      <button 
+                        onClick={() => setStatus("idle")}
+                        className="mt-8 px-8 py-3 bg-white/5 hover:bg-white/10 border border-white/10 hover:border-white/20 text-white rounded-xl font-bold tracking-widest uppercase text-xs transition-all relative z-10 w-full"
+                      >
+                        Acknowledge
+                      </button>
+                    </motion.div>
+                  </div>
+                )}
+              </AnimatePresence>
 
             </form>
           </div>
