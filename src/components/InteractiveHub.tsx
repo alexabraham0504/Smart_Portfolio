@@ -2,9 +2,8 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { GraduationCap, Briefcase, Award, Code2, FolderGit2, Mail, Terminal, Globe, Server, Database, Brain, Hexagon, Wrench, Scan } from "lucide-react";
+import { GraduationCap, Briefcase, Award, Code2, FolderGit2, Terminal, Globe, Server, Database, Brain, Hexagon, Wrench, Scan } from "lucide-react";
 import Projects from "./Projects";
-import Contact from "./Contact";
 
 type TabId = "education" | "experience" | "certifications" | "arsenal" | "projects";
 
