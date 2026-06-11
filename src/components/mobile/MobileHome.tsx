@@ -1,22 +1,34 @@
 "use client";
 
+import { useRef } from "react";
+import { useScroll } from "framer-motion";
 import MobileScrollyCanvas from "./MobileScrollyCanvas";
 import MobileOverlay from "./MobileOverlay";
+import MobileProjects from "./MobileProjects";
 import MobileInteractiveHub from "./MobileInteractiveHub";
 import MobileContact from "./MobileContact";
 
 export default function MobileHome() {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start start", "end end"]
+  });
+
   return (
     <main className="bg-[#121212] min-h-screen selection:bg-white/20 selection:text-white">
       {/* 
         Mobile Layout:
-        Instead of a complex 500vh container, we just use standard vertical stacking.
-        The MobileScrollyCanvas provides a fixed background.
+        We wrap the Canvas and Overlay in a scrolling container.
+        We add pb-[50vh] to artificially increase the scroll length so the video has time to play.
       */}
-      <MobileScrollyCanvas />
+      <div ref={containerRef} className="relative w-full pb-[50vh]">
+        <MobileScrollyCanvas scrollYProgress={scrollYProgress} />
+        <MobileOverlay />
+      </div>
       
       <div className="relative z-10">
-        <MobileOverlay />
+        <MobileProjects />
         <MobileInteractiveHub />
         <MobileContact />
       </div>
