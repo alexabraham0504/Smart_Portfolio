@@ -1,11 +1,13 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useState, useEffect } from "react";
 import { useScroll } from "framer-motion";
 import ScrollyCanvas from "@/components/ScrollyCanvas";
 import Overlay from "@/components/Overlay";
 import InteractiveHub from "@/components/InteractiveHub";
 import Contact from "@/components/Contact";
+import { useIsMobile } from "@/hooks/useIsMobile";
+import MobileHome from "@/components/mobile/MobileHome";
 
 export default function Home() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -13,6 +15,21 @@ export default function Home() {
     target: containerRef,
     offset: ["start start", "end end"]
   });
+
+  const isMobile = useIsMobile();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) {
+    return <main className="bg-[#121212] min-h-screen" />; // Prevent hydration mismatch
+  }
+
+  if (isMobile) {
+    return <MobileHome />;
+  }
 
   return (
     <main className="bg-[#121212] min-h-screen selection:bg-white/20 selection:text-white">
