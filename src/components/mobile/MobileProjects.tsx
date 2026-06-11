@@ -43,9 +43,26 @@ const projects = [
 
 export default function MobileProjects() {
   return (
-    <div className="w-full pb-8">
-      {/* Optimized Header */}
-      <div className="mb-8">
+    <div className="relative w-full pb-8">
+      {/* 3D Animated Intersecting Geometry Background - Optimized */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none [perspective:800px] flex items-center justify-center opacity-30">
+        <motion.div 
+          animate={{ rotateX: [0, 360], rotateY: [0, 360] }}
+          transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
+          className="absolute w-[300px] h-[150px] border-[2px] border-cyan-500/30 rounded-[50px]"
+          style={{ transformStyle: 'preserve-3d' }}
+        />
+        <motion.div 
+          animate={{ rotateX: [360, 0], rotateZ: [0, 360] }}
+          transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
+          className="absolute w-[200px] h-[300px] border-[2px] border-blue-500/30 rounded-full border-dashed"
+          style={{ transformStyle: 'preserve-3d' }}
+        />
+      </div>
+
+      <div className="relative z-10">
+        {/* Optimized Header */}
+        <div className="mb-8">
         <h2 className="text-white text-3xl font-light tracking-tight">
           SELECTED <span className="font-bold">WORKS</span>
         </h2>
@@ -98,6 +115,7 @@ export default function MobileProjects() {
             </div>
           </motion.div>
         ))}
+      </div>
       </div>
     </div>
   );

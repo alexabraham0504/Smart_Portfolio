@@ -55,8 +55,36 @@ export default function MobileInteractiveHub() {
             })}
           </div>
 
-          {/* Optimized Content Area (No massive 3D renders) */}
-          <div className="w-full relative min-h-[400px] border border-white/10 bg-black/40 backdrop-blur-xl rounded-2xl p-5 shadow-lg">
+          {/* Optimized Content Area with 3D Background */}
+          <div className="w-full relative min-h-[400px] border border-white/10 bg-black/40 backdrop-blur-xl rounded-2xl p-5 shadow-lg overflow-hidden">
+            
+            {/* Conditional 3D Backgrounds based on Active Tab */}
+            <div className="absolute inset-0 pointer-events-none [perspective:1000px] opacity-20">
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={activeTab + "-bg"}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.5 }}
+                  className="absolute inset-0 flex items-center justify-center"
+                >
+                  {activeTab === "experience" && (
+                    <motion.div animate={{ rotateX: [0, 360], rotateZ: [0, 360] }} transition={{ duration: 30, repeat: Infinity, ease: "linear" }} className="w-[300px] h-[300px] border-[2px] border-orange-500/30 rounded-full" style={{ transformStyle: 'preserve-3d' }} />
+                  )}
+                  {activeTab === "education" && (
+                    <motion.div animate={{ rotateY: [0, 360], rotateX: [0, 360] }} transition={{ duration: 25, repeat: Infinity, ease: "linear" }} className="w-[250px] h-[250px] border-[2px] border-emerald-500/30" style={{ transformStyle: 'preserve-3d' }} />
+                  )}
+                  {activeTab === "arsenal" && (
+                    <motion.div animate={{ rotateZ: [0, 360], rotateY: [0, 360] }} transition={{ duration: 35, repeat: Infinity, ease: "linear" }} className="w-[350px] h-[350px] border-[2px] border-purple-500/30 rounded-[40px]" style={{ transformStyle: 'preserve-3d' }} />
+                  )}
+                  {activeTab === "certifications" && (
+                    <motion.div animate={{ rotateX: [360, 0], rotateZ: [0, 360] }} transition={{ duration: 30, repeat: Infinity, ease: "linear" }} className="w-[200px] h-[200px] border-[4px] border-yellow-500/30 rounded-full border-dashed" style={{ transformStyle: 'preserve-3d' }} />
+                  )}
+                </motion.div>
+              </AnimatePresence>
+            </div>
+
             <AnimatePresence mode="wait">
               <motion.div
                 key={activeTab}

@@ -38,10 +38,22 @@ export default function MobileContact() {
   };
 
   return (
-    <section className="relative z-20 bg-[#121212] py-16 px-4" id="contact">
-      {/* Simplified Background */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden flex items-center justify-center opacity-40">
-        <div className="absolute w-[300px] h-[300px] bg-orange-600/10 blur-[80px] rounded-full" />
+    <section className="relative z-20 bg-[#121212] py-16 px-4 overflow-hidden" id="contact">
+      {/* 3D Animated Orbital Rings Background - Optimized */}
+      <div className="absolute inset-0 pointer-events-none [perspective:800px] overflow-hidden flex items-center justify-center opacity-30">
+        <motion.div 
+          animate={{ rotateX: 60, rotateZ: [0, 360] }}
+          transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
+          className="absolute w-[400px] h-[400px] border border-orange-500/30 rounded-full"
+          style={{ transformStyle: 'preserve-3d' }}
+        />
+        <motion.div 
+          animate={{ rotateX: 60, rotateZ: [360, 0] }}
+          transition={{ duration: 50, repeat: Infinity, ease: "linear" }}
+          className="absolute w-[500px] h-[500px] border border-red-500/20 rounded-full border-dashed"
+          style={{ transformStyle: 'preserve-3d' }}
+        />
+        <div className="absolute w-[300px] h-[300px] bg-orange-600/10 blur-[60px] rounded-full" />
       </div>
 
       <div className="max-w-7xl mx-auto relative z-10 flex flex-col gap-10">

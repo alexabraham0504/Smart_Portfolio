@@ -23,6 +23,24 @@ export default function MobileOverlay() {
   return (
     <div className="relative z-10 w-full min-h-screen pt-24 pb-16 px-6 flex flex-col justify-center gap-10 overflow-hidden">
       
+      {/* 3D Radar Background */}
+      <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none -z-10 opacity-30">
+        <div className="absolute inset-0 flex items-center justify-center [perspective:1000px]">
+          <motion.div
+            animate={{ rotateX: [60, 60], rotateZ: [0, 360] }}
+            transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+            className="w-[150vw] h-[150vw] max-w-[600px] max-h-[600px] border-[0.5px] border-cyan-500/30 rounded-full"
+            style={{ transformStyle: 'preserve-3d' }}
+          />
+          <motion.div
+            animate={{ rotateX: [60, 60], rotateZ: [360, 0] }}
+            transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
+            className="absolute w-[100vw] h-[100vw] max-w-[400px] max-h-[400px] border-[1px] border-blue-500/20 rounded-full border-dashed"
+            style={{ transformStyle: 'preserve-3d' }}
+          />
+        </div>
+      </div>
+
       {/* Top Header/Logo Alternative */}
       <div className="absolute top-0 left-0 w-full p-6 flex justify-between items-center z-50">
         <div className="flex items-center gap-1 text-2xl font-black tracking-tighter">
