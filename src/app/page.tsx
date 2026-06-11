@@ -23,11 +23,9 @@ export default function Home() {
     setMounted(true);
   }, []);
 
-  if (!mounted) {
-    return <main className="bg-[#121212] min-h-screen" />; // Prevent hydration mismatch
-  }
-
-  if (isMobile) {
+  // We render the original desktop view by default for SSR and laptops.
+  // We only render MobileHome if mounted and isMobile is true.
+  if (mounted && isMobile) {
     return <MobileHome />;
   }
 

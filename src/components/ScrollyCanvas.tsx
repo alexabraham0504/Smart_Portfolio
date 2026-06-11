@@ -20,7 +20,6 @@ const ScrollyCanvas: React.FC<ScrollyCanvasProps> = ({ scrollYProgress }) => {
   // Preload images
   useEffect(() => {
     const loadedImages: HTMLImageElement[] = [];
-    let loadedCount = 0;
 
     for (let i = 0; i < FRAME_COUNT; i++) {
       const img = new Image();
@@ -29,7 +28,6 @@ const ScrollyCanvas: React.FC<ScrollyCanvasProps> = ({ scrollYProgress }) => {
       img.src = `/sequence/frame_${num}_delay-0.066s.png`;
       
       img.onload = () => {
-        loadedCount++;
         // If it's the very first image, draw it immediately
         if (i === 0 && canvasRef.current) {
           drawFrame(img, canvasRef.current);
